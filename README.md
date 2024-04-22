@@ -4,7 +4,7 @@ This is the final project for the class AEM 3103 at the U of M, Twin Cities. Thi
 # Paper Airplane Numerical Study
 Final Project: AEM 3103 Spring 2024
 
-- By: Lani Calderon,
+- By: Lani Calderon, Keenan Raby, 
 
 ## Summary of Findings
 <Show the variations studied in a table>
