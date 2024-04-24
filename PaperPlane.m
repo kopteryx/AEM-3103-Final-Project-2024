@@ -36,8 +36,8 @@ R_max   =   25;
 to		=	0;			% Initial Time, sec
 t1 = 1; t2 = 2; t3 = 3; t4 = 4; t5 = 5;
 tf		=	6;			% Final Time, sec
-
 tspan	=	[to tf];
+% Implementation of height vs range for changing variables.
 x0		=	[V_1;Gam_1;H;R];
 [ta,xa]	=	ode23('EqMotion',tspan,x0);
 x1		=	[V_1;Gam_2;H;R];
@@ -52,21 +52,16 @@ y2      =   [V_3;Gam_1;H;R];
 figure
 subplot(2,1,1)
 hold on
-plot(xa(:,4),xa(:,3),'k')
-plot(ya(:,4),ya(:,3),'r')
-plot(za(:,4),za(:,4),'g')
-title('Height vs Range for varying Gamma')
+plot(xa(:,4),xa(:,3),'k',ya(:,4),ya(:,3),'r',za(:,4),za(:,4),'g')
+title('Height Vs. Range For Varying Gammas')
 xlabel('Range, m'), ylabel('Height, m'), grid
 legend(sprintf("γ_1 (Gam_1=%g)", Gam_1),...
    sprintf("γ_2 (Gam_2=%g)", Gam_2),...
    sprintf("γ_3 (Gam_3=%g)", Gam_3));  
 subplot(2,1,2)
-
 hold on
-plot(xa(:,4),xa(:,3),'k')
-plot(yb(:,4),yb(:,3),'r')
-plot(yc(:,4),yc(:,4),'g')
-title('Height vs Range for varying velocity')
+plot(xa(:,4),xa(:,3),'k',yb(:,4),yb(:,3),'r',yc(:,4),yc(:,4),'g')
+title('Height Vs. Range For Varying Velocities')
 xlabel('Range, m'), ylabel('Height, m'), grid
 legend(sprintf("Velocity_1 (V_1=%g)", V_1),...
    sprintf("Velocity_2 (V_2=%g)", V_2),...
@@ -87,7 +82,7 @@ xo		=	[3*V_1;0;H;R];
 % 100 Iterations with random numbers for time and range
 % t_range = [to t1 t2 t3 t4 t5 tf]; USELESS?
 figure; hold on;
-
+t_range=linspace(.1,6,100);
 for i=1: 100 
     V_rand = 0 + (10-0)*rand(1);
     Gam_rand = 0 + (2*pi-0)*rand(1);
@@ -96,12 +91,27 @@ for i=1: 100
     %t_randi = randi([1 tf]);
 
     xo = [V_rand;Gam_rand;H_rand;R_rand];
-    [t_rand,x_rand]	=	ode23('EqMotion',tspan,xo);
+    [t_rand,x_rand]	=	ode23('EqMotion',t_range,xo);
 
     plot(x_rand(:,4),x_rand(:,3));
     title('Height v. Range With 100 Iterations of Random Perameters');
     xlabel('Range, m'), ylabel('Height, m'), grid
 end
+% Applying a polyfit to the data
+p1=polyfit(t_rand,x_rand(:,4),5);
+f1=polyval(p1,t_rand);
+p2=polyfit(t_rand,x_rand(:,3),5);
+f2=polyval(p2,t_rand);
+
+figure
+subplot(2,1,1)
+plot(t_rand,f1,'c')
+title('Time vs Range Curve Fit')
+xlabel('Time'), ylabel('Range'), grid
+subplot(2,1,2)
+plot(t_rand,f2,'m')
+title('Time vs Height Curve Fit')
+xlabel('Time'), ylabel('Height'), grid
 
 figure
 plot(xa(:,4),xa(:,3),xb(:,4),xb(:,3),xc(:,4),xc(:,3),xd(:,4),xd(:,3))
