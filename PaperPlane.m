@@ -90,10 +90,7 @@ f1=polyval(p1,t_rand);
 p2=polyfit(t_rand,x_rand(:,3),5);
 f2=polyval(p2,t_rand);
 
-%time derivatives
-dhdt=diff(f1)./diff(t_rand);
-drdt=diff(f2)./diff(t_rand);
-figure;
+figure
 hold on;
 subplot(2,1,1)
 plot(t_rand,f1,'c')
@@ -103,6 +100,10 @@ subplot(2,1,2)
 plot(t_rand,f2,'m')
 title('Time vs Height Curve Fit')
 xlabel('Time, s'), ylabel('Height, m'), grid
+
+% Time derivatives
+dhdt=diff(f1)./diff(t_rand);
+drdt=diff(f2)./diff(t_rand);
 
 figure
 hold on
