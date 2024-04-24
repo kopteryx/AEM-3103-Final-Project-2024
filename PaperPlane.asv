@@ -93,19 +93,10 @@ f2=polyval(p2,t_rand);
 %time derivatives
 dhdt=diff(f1)./diff(t_rand);
 drdt=diff(f2)./diff(t_rand);
-figure;
-hold on;
-
+figure
 subplot(2,1,1)
-plot(t_rand(2:end),drdt,'c');
-title('dr vs dt')
-xlabel('Time, s'), ylabel('Range, m'), grid
-hold on;
+plot(t_rand(2:end),dhdt);
 subplot(2,1,2)
-plot(t_rand(2:end),dhdt,'m');
-title('dh vs dt')
-xlabel('Time, s'), ylabel('Range, m'), grid
-
     
 
 figure
