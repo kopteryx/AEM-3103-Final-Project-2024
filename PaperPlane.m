@@ -96,11 +96,12 @@ for i=1: 100
     %t_randi = randi([1 tf]);
 
     xo = [V_rand;Gam_rand;H_rand;R_rand];
-    [t_rand,x_rand]	=	ode23('EqMotion',tspan,xo);
+    [t_rand,x_rand]	= ode23('EqMotion',tspan,xo);
 
     plot(x_rand(:,4),x_rand(:,3));
     title('Height v. Range With 100 Iterations of Random Perameters');
     xlabel('Range, m'), ylabel('Height, m'), grid
+
 end
 
 figure
@@ -120,6 +121,3 @@ xlabel('Time, s'), ylabel('Altitude, m'), grid
 subplot(2,2,4)
 plot(ta,xa(:,4),tb,xb(:,4),tc,xc(:,4),td,xd(:,4))
 xlabel('Time, s'), ylabel('Range, m'), grid
-
-
-
