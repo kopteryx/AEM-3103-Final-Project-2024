@@ -96,10 +96,10 @@ subplot(2,1,1)
 plot(t_rand,f1,'c')
 title('Time vs Range Curve Fit')
 xlabel('Time, s'), ylabel('Range, m'), grid
+
 subplot(2,1,2)
 plot(t_rand,f2,'m')
 title('Time vs Height Curve Fit')
-<<<<<<< HEAD
 xlabel('Time'), ylabel('Height'), grid
 
 figure
@@ -110,15 +110,16 @@ figure
 subplot(2,2,1)
 plot(ta,xa(:,1),tb,xb(:,1),tc,xc(:,1),td,xd(:,1))
 xlabel('Time, s'), ylabel('Velocity, m/s'), grid
+
 subplot(2,2,2)
 plot(ta,xa(:,2),tb,xb(:,2),tc,xc(:,2),td,xd(:,2))
 xlabel('Time, s'), ylabel('Flight Path Angle, rad'), grid
+
 subplot(2,2,3)
 plot(ta,xa(:,3),tb,xb(:,3),tc,xc(:,3),td,xd(:,3))
 xlabel('Time, s'), ylabel('Altitude, m'), grid
+
 subplot(2,2,4)
 plot(ta,xa(:,4),tb,xb(:,4),tc,xc(:,4),td,xd(:,4))
 xlabel('Time, s'), ylabel('Range, m'), grid
-=======
 xlabel('Time, s'), ylabel('Height, m'), grid
->>>>>>> d3888685f30c64cb673254db87c5887e8f2717fc
