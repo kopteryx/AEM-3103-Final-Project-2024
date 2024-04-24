@@ -95,7 +95,17 @@ dhdt=diff(f1)./diff(t_rand);
 drdt=diff(f2)./diff(t_rand);
 figure;
 hold on;
+subplot(2,1,1)
+plot(t_rand,f1,'c')
+title('Time vs Range Curve Fit')
+xlabel('Time, s'), ylabel('Range, m'), grid
+subplot(2,1,2)
+plot(t_rand,f2,'m')
+title('Time vs Height Curve Fit')
+xlabel('Time, s'), ylabel('Height, m'), grid
 
+figure
+hold on
 subplot(2,1,1)
 plot(t_rand(2:end),drdt,'c');
 title('dr vs dt')
@@ -105,15 +115,3 @@ subplot(2,1,2)
 plot(t_rand(2:end),dhdt,'m');
 title('dh vs dt')
 xlabel('Time, s'), ylabel('Range, m'), grid
-
-    
-
-figure
-subplot(2,1,1)
-plot(t_rand,f1,'c')
-title('Time vs Range Curve Fit')
-xlabel('Time, s'), ylabel('Range, m'), grid
-subplot(2,1,2)
-plot(t_rand,f2,'m')
-title('Time vs Height Curve Fit')
-xlabel('Time, s'), ylabel('Height, m'), grid
