@@ -41,18 +41,19 @@ tspan	=	[to tf];
 x0		=	[V_1;Gam_1;H;R];
 [ta,xa]	=	ode23('EqMotion',tspan,x0);
 x1		=	[V_1;Gam_2;H;R];
-[ua,ya]	=	ode23('EqMotion',tspan,x1);
+[tb,xb]	=	ode23('EqMotion',tspan,x1);
 x2		=	[V_1;Gam_3;H;R];
-[va,za]	=	ode23('EqMotion',tspan,x2);	
+[tc,xc]	=	ode23('EqMotion',tspan,x2);	
 y1      =   [V_2;Gam_1;H;R];
-[ub,yb]	=	ode23('EqMotion',tspan,y1);
+[ta2,xa2]	=	ode23('EqMotion',tspan,y1);
 y2      =   [V_3;Gam_1;H;R];
-[uc,yc]	=	ode23('EqMotion',tspan,y2);
+[tb2,xb2]	=	ode23('EqMotion',tspan,y2);
 
+% Plotting the data and making it pretty
 figure
 subplot(2,1,1)
 hold on
-plot(xa(:,4),xa(:,3),'k',ya(:,4),ya(:,3),'r',za(:,4),za(:,4),'g')
+plot(xa(:,4),xa(:,3),'k',xb(:,4),xb(:,3),'r',xc(:,4),xc(:,3),'g')
 title('Height Vs. Range For Varying Gammas')
 xlabel('Range, m'), ylabel('Height, m'), grid
 legend(sprintf("γ_1 (Gam_1=%g)", Gam_1),...
@@ -60,44 +61,30 @@ legend(sprintf("γ_1 (Gam_1=%g)", Gam_1),...
    sprintf("γ_3 (Gam_3=%g)", Gam_3));  
 subplot(2,1,2)
 hold on
-plot(xa(:,4),xa(:,3),'k',yb(:,4),yb(:,3),'r',yc(:,4),yc(:,4),'g')
+plot(xa(:,4),xa(:,3),'k',xa2(:,4),xa2(:,3),'r',xb2(:,4),xb2(:,3),'g')
 title('Height Vs. Range For Varying Velocities')
 xlabel('Range, m'), ylabel('Height, m'), grid
 legend(sprintf("Velocity_1 (V_1=%g)", V_1),...
    sprintf("Velocity_2 (V_2=%g)", V_2),...
    sprintf("Velocity_3 (V_3=%g)", V_3));   
 
-%	b) Oscillating Glide due to Zero Initial Flight Path Angle
-xo		=	[V_1;0;H;R];
-[tb,xb]	=	ode23('EqMotion',tspan,xo);
-
-%	c) Effect of Increased Initial Velocity
-xo		=	[1.5*V_1;0;H;R];
-[tc,xc]	=	ode23('EqMotion',tspan,xo);
-
-%	d) Effect of Further Increase in Initial Velocity
-xo		=	[3*V_1;0;H;R];
-[td,xd]	=	ode23('EqMotion',tspan,xo);
-
 % 100 Iterations with random numbers for time and range
-% t_range = [to t1 t2 t3 t4 t5 tf]; USELESS?
 figure; hold on;
 t_range=linspace(.1,6,100);
 for i=1: 100 
-    V_rand = 0 + (10-0)*rand(1);
-    Gam_rand = 0 + (2*pi-0)*rand(1);
-    H_rand = -2 + (5-(-2))*rand(1);
-    R_rand = R + (R_max-R)*rand(1);
+    V_rand = V_2 + (V_3-V_2)*rand(1);
+    Gam_rand = Gam_2 + (Gam_3-Gam_2)*rand(1);
     %t_randi = randi([1 tf]);
 
-    xo = [V_rand;Gam_rand;H_rand;R_rand];
-    [t_rand,x_rand]	= ode23('EqMotion',tspan,xo);
+    xo = [V_rand;Gam_rand;H;R];
+    [t_rand,x_rand]	=	ode23('EqMotion',t_range,xo);
 
     plot(x_rand(:,4),x_rand(:,3));
     title('Height v. Range With 100 Iterations of Random Perameters');
     xlabel('Range, m'), ylabel('Height, m'), grid
 
 end
+
 % Applying a polyfit to the data
 p1=polyfit(t_rand,x_rand(:,4),5);
 f1=polyval(p1,t_rand);
@@ -108,10 +95,11 @@ figure
 subplot(2,1,1)
 plot(t_rand,f1,'c')
 title('Time vs Range Curve Fit')
-xlabel('Time'), ylabel('Range'), grid
+xlabel('Time, s'), ylabel('Range, m'), grid
 subplot(2,1,2)
 plot(t_rand,f2,'m')
 title('Time vs Height Curve Fit')
+<<<<<<< HEAD
 xlabel('Time'), ylabel('Height'), grid
 
 figure
@@ -131,3 +119,6 @@ xlabel('Time, s'), ylabel('Altitude, m'), grid
 subplot(2,2,4)
 plot(ta,xa(:,4),tb,xb(:,4),tc,xc(:,4),td,xd(:,4))
 xlabel('Time, s'), ylabel('Range, m'), grid
+=======
+xlabel('Time, s'), ylabel('Height, m'), grid
+>>>>>>> d3888685f30c64cb673254db87c5887e8f2717fc
