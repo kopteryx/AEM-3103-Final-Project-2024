@@ -84,11 +84,21 @@ p2=polyfit(t_rand,x_rand(:,3),5);
 f2=polyval(p2,t_rand);
 
 % Time derivatives for average height and range
+figure; hold on;
+subplot(2,1,1)
+plot(t_rand,f1,'c')
+title('Time vs Range Curve Fit')
+xlabel('Time, s'), ylabel('Range, m'), grid
+subplot(2,1,2)
+plot(t_rand,f2,'m')
+title('Time vs Height Curve Fit')
+xlabel('Time, s'), ylabel('Height, m'), grid
+
+% Time derivatives
 dhdt=diff(f1)./diff(t_rand);
 drdt=diff(f2)./diff(t_rand);
-figure;
-hold on;
 
+figure; hold on
 subplot(2,1,1)
 plot(t_rand(2:end),drdt,'c');
 title('dr vs dt')
