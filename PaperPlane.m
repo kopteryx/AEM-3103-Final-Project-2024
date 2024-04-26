@@ -1,9 +1,7 @@
 %	Example 1.3-1 Paper Airplane Flight Path
 %	Copyright 2005 by Robert Stengel
 %	August 23, 2005
-close all;
-clear;
-clc;
+close all; clear; clc;
 
 global CL CD S m g rho	
 S		=	0.017;			% Reference Area, m^2
@@ -24,20 +22,17 @@ Gam_2   =   -.5;
 Gam_3   =   .4;
 V_1		=	sqrt(2 * m * g /(rho * S * (CL * cos(Gam_1) - CD * sin(Gam_1))));
 V_2     =   2;
-V_3     =   7.5;
-% Corresponding Velocity, m/s
-
+V_3     =   7.5; % Corresponding Velocity, m/s
 Alpha	=	CL / CLa; % Corresponding Angle of Attack, rad
 
-%	a) Equilibrium Glide at Maximum Lift/Drag Ratio
 H		=	2;			% Initial Height, m
 R       =	0;			% Initial Range, m
 R_max   =   25;
 to		=	0;			% Initial Time, sec
-t1 = 1; t2 = 2; t3 = 3; t4 = 4; t5 = 5;
 tf		=	6;			% Final Time, sec
 tspan	=	[to tf];
-% Implementation of height vs range for changing variables.
+
+%% Implementation of height vs range for changing variables.
 x0		=	[V_1;Gam_1;H;R];
 [ta,xa]	=	ode23('EqMotion',tspan,x0);
 x1		=	[V_1;Gam_2;H;R];
@@ -50,17 +45,15 @@ y2      =   [V_3;Gam_1;H;R];
 [tb2,xb2]	=	ode23('EqMotion',tspan,y2);
 
 % Plotting the data and making it pretty
-figure
-subplot(2,1,1)
-hold on
+figure; subplot(2,1,1); hold on;
 plot(xa(:,4),xa(:,3),'k',xb(:,4),xb(:,3),'r',xc(:,4),xc(:,3),'g')
 title('Height Vs. Range For Varying Gammas')
 xlabel('Range, m'), ylabel('Height, m'), grid
 legend(sprintf("γ_1 (Gam_1=%g)", Gam_1),...
    sprintf("γ_2 (Gam_2=%g)", Gam_2),...
    sprintf("γ_3 (Gam_3=%g)", Gam_3));  
-subplot(2,1,2)
-hold on
+
+subplot(2,1,2); hold on;
 plot(xa(:,4),xa(:,3),'k',xa2(:,4),xa2(:,3),'r',xb2(:,4),xb2(:,3),'g')
 title('Height Vs. Range For Varying Velocities')
 xlabel('Range, m'), ylabel('Height, m'), grid
@@ -68,13 +61,12 @@ legend(sprintf("Velocity_1 (V_1=%g)", V_1),...
    sprintf("Velocity_2 (V_2=%g)", V_2),...
    sprintf("Velocity_3 (V_3=%g)", V_3));   
 
-% 100 Iterations with random numbers for time and range
+%% 100 Iterations with random numbers for time and range
 figure; hold on;
 t_range=linspace(.1,6,100);
 for i=1: 100 
     V_rand = V_2 + (V_3-V_2)*rand(1);
     Gam_rand = Gam_2 + (Gam_3-Gam_2)*rand(1);
-    %t_randi = randi([1 tf]);
 
     xo = [V_rand;Gam_rand;H;R];
     [t_rand,x_rand]	=	ode23('EqMotion',t_range,xo);
@@ -85,13 +77,13 @@ for i=1: 100
 
 end
 
-% Applying a polyfit to the data
+%% Applying a polyfit to the data
 p1=polyfit(t_rand,x_rand(:,4),5);
 f1=polyval(p1,t_rand);
 p2=polyfit(t_rand,x_rand(:,3),5);
 f2=polyval(p2,t_rand);
 
-%time derivatives
+% Time derivatives for average height and range
 dhdt=diff(f1)./diff(t_rand);
 drdt=diff(f2)./diff(t_rand);
 figure;
@@ -105,9 +97,7 @@ hold on;
 subplot(2,1,2)
 plot(t_rand(2:end),dhdt,'m');
 title('dh vs dt')
-xlabel('Time, s'), ylabel('Range, m'), grid
-
-    
+xlabel('Time, s'), ylabel('Height, m'), grid    
 
 figure
 subplot(2,1,1)
@@ -118,26 +108,43 @@ xlabel('Time, s'), ylabel('Range, m'), grid
 subplot(2,1,2)
 plot(t_rand,f2,'m')
 title('Time vs Height Curve Fit')
-xlabel('Time'), ylabel('Height'), grid
-
-figure
-plot(xa(:,4),xa(:,3),xb(:,4),xb(:,3),xc(:,4),xc(:,3),xd(:,4),xd(:,3))
-xlabel('Range, m'), ylabel('Height, m'), grid
-
-figure
-subplot(2,2,1)
-plot(ta,xa(:,1),tb,xb(:,1),tc,xc(:,1),td,xd(:,1))
-xlabel('Time, s'), ylabel('Velocity, m/s'), grid
-
-subplot(2,2,2)
-plot(ta,xa(:,2),tb,xb(:,2),tc,xc(:,2),td,xd(:,2))
-xlabel('Time, s'), ylabel('Flight Path Angle, rad'), grid
-
-subplot(2,2,3)
-plot(ta,xa(:,3),tb,xb(:,3),tc,xc(:,3),td,xd(:,3))
-xlabel('Time, s'), ylabel('Altitude, m'), grid
-
-subplot(2,2,4)
-plot(ta,xa(:,4),tb,xb(:,4),tc,xc(:,4),td,xd(:,4))
-xlabel('Time, s'), ylabel('Range, m'), grid
 xlabel('Time, s'), ylabel('Height, m'), grid
+
+%% GIF for 2D trajectory (Range v. Height)
+gif_filename = 'glider_trajectory.gif';
+frames = [];
+delays = [];
+
+y_max = [V_3;Gam_3;H;R];
+[t_max,x_max] =	ode23('EqMotion',tspan,y_max);
+
+% Plot the trajectory point by point for nominal velocity & gamma
+figure; hold on; grid on;
+for i = 1:length(x_max)
+    plot(x_max(i,4), x_max(i,3), 'ro', 'MarkerSize', 2);
+    drawnow;
+    pause(0.1); 
+end
+% Plot the trajectory point by point for max bounded velocity & gamma
+for i = 1:length(xa)
+    plot(xa(i,4), xa(i,3), 'k*', 'MarkerSize', 2);
+    drawnow;
+    pause(0.1); 
+end
+
+xlabel('Range, m'); ylabel('Height, m'); 
+title('Glider 2D Trajectory: Nominal and Max Velocity & Gamma Values');
+% % Plot annotation     FIXME! ANNOTATE, MAYBE ADD CURVE FIT, DIFF COLORS
+% text(x(1,4), x(1,3), sprintf('Start (V=%.2f m/s, \\gamma=%.2f rad)', V, Gamma), 'FontSize', 8);
+% text(x(end,4), x(end,3), 'End', 'FontSize', 8);
+
+% Capture each frame for GIF
+frame = getframe(gcf);
+im = frame2im(frame);
+[imind, cm] = rgb2ind(im, 256);
+
+if isempty(frames)
+    imwrite(imind, cm, gif_filename, 'gif', 'Loopcount', inf);
+else
+    imwrite(imind, cm, gif_filename, 'gif', 'WriteMode', 'append', 'DelayTime', 0.1);
+end
