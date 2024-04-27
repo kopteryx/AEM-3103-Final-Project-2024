@@ -109,52 +109,51 @@ plot(t_rand(2:end),dhdt,'m');
 title('dh vs dt')
 xlabel('Time, s'), ylabel('Height, m'), grid    
 
-figure
-subplot(2,1,1)
-plot(t_rand,f1,'c')
-title('Time vs Range Curve Fit')
-xlabel('Time, s'), ylabel('Range, m'), grid
-
-subplot(2,1,2)
-plot(t_rand,f2,'m')
-title('Time vs Height Curve Fit')
-xlabel('Time, s'), ylabel('Height, m'), grid
-
 %% GIF for 2D trajectory (Range v. Height)
 gif_filename = 'glider_trajectory.gif';
-frames = [];
-delays = [];
 
 y_max = [V_3;Gam_3;H;R];
 [t_max,x_max] =	ode23('EqMotion',tspan,y_max);
 
-% Plot the trajectory point by point for nominal velocity & gamma
 figure; hold on; grid on;
-for i = 1:length(x_max)
-    plot(x_max(i,4), x_max(i,3), 'ro', 'MarkerSize', 2);
-    drawnow;
-    pause(0.1); 
-end
-% Plot the trajectory point by point for max bounded velocity & gamma
-for i = 1:length(xa)
-    plot(xa(i,4), xa(i,3), 'k*', 'MarkerSize', 2);
-    drawnow;
-    pause(0.1); 
-end
-
+line_nominal = animatedline('Color','k');
+line_max = animatedline('Color','g');
+axis([0,25,-2,4]);
 xlabel('Range, m'); ylabel('Height, m'); 
-title('Glider 2D Trajectory: Nominal and Max Velocity & Gamma Values');
-% % Plot annotation     FIXME! ANNOTATE, MAYBE ADD CURVE FIT, DIFF COLORS
-% text(x(1,4), x(1,3), sprintf('Start (V=%.2f m/s, \\gamma=%.2f rad)', V, Gamma), 'FontSize', 8);
-% text(x(end,4), x(end,3), 'End', 'FontSize', 8);
+title('Glider 2D Trajectory: Nominal and Upper Bound Values');
+legend(sprintf('Max Bounds: V = %.2f m/s, \\gamma = %.2f rad', V_3, Gam_3), sprintf('Nominal: V = %.2f m/s, \\gamma = %.2f rad', V_1, Gam_1));
 
-% Capture each frame for GIF
-frame = getframe(gcf);
-im = frame2im(frame);
-[imind, cm] = rgb2ind(im, 256);
+% Read in glider image
+glider_img = 'Glider Solidworks Screenshot.png';   
+[inPlot,~,alpha] = imread(glider_img); 
+inPlot = flipud(inPlot); 
+alpha = flipud(alpha);
+imgsize = [4 1];
 
-if isempty(frames)
-    imwrite(imind, cm, gif_filename, 'gif', 'Loopcount', inf);
-else
-    imwrite(imind, cm, gif_filename, 'gif', 'WriteMode', 'append', 'DelayTime', 0.1);
+% Gets current coordinates for the image 
+glider_x1 = [-0.5 0.5]*imgsize(1) + x_max(1,3);
+glider_y1 = [-0.5 0.5]*imgsize(2) + x_max(1,4);
+p1 = image(glider_x1,glider_y1,inPlot);
+p1.AlphaData = alpha; 
+
+glider_x2 = [-0.5 0.5]*imgsize(1) + xa(1,3);
+glider_y2 = [-0.5 0.5]*imgsize(2) + xa(1,4);
+p2 = image(glider_x2,glider_y2,inPlot);
+p2.AlphaData = alpha; 
+
+% Plot the trajectory point by point for nominal velocity & gamma
+for i = 1:length(x_max)
+    addpoints(line_nominal,x_max(i,4),x_max(i,3));
+    p1.XData = [-0.5 0.5]*imgsize(1) + x_max(i,4);
+    p1.YData = [-0.5 0.5]*imgsize(2) + x_max(i,3);
+
+    if i <= length(xa)
+        addpoints(line_max,xa(i,4), xa(i,3));
+        p2.XData = [-0.5 0.5]*imgsize(1) + xa(i,4);
+        p2.YData = [-0.5 0.5]*imgsize(2) + xa(i,3);
+    end
+
+    drawnow;
+    pause(0.075);
+    exportgraphics(gca,'glider_trajectory.gif','Append',true);
 end
