@@ -17,6 +17,11 @@ Reference the figures below as needed.
 # Code Listing
 A list of each function/script and a single-line description of what it does.  The name of the function/script should link to the file in the repository on GitHub.
 
+[EqMotion](EqMotion.m)
+This function solves for xdot based on the global variables of the given parameters
+[PaperPlane](PaperPlane.m)
+This is the main script that runs all of the graphing and compution needed for the project
+
 # Figures
 
 ## Fig. 1: Single Parameter Variation
