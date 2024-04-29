@@ -63,49 +63,54 @@ legend(sprintf("Velocity_1 (V_1 = %g)", V_1),...
 
 %% 100 Iterations with random numbers for time and range
 figure; hold on;
-t_range=linspace(.1,6,100);
+t_range=linspace(0,6,100);
+t_sum=0;
+x_sum=0;
+
 for i=1: 100 
     V_rand = V_2 + (V_3-V_2)*rand(1);
     Gam_rand = Gam_2 + (Gam_3-Gam_2)*rand(1);
-
     xo = [V_rand;Gam_rand;H;R];
     [t_rand,x_rand]	=	ode23('EqMotion',t_range,xo);
-
+    t_sum=t_sum+t_rand;
+    x_sum=x_sum+x_rand;
     plot(x_rand(:,4),x_rand(:,3));
     title('Height v. Range With 100 Iterations of Random Perameters');
     xlabel('Range, m'), ylabel('Height, m'), grid
 
 end
+t_avg=t_sum/100;
+x_avg=x_sum/100;
 
 %% Applying a polyfit to the data
-p1=polyfit(t_rand,x_rand(:,4),5);
-f1=polyval(p1,t_rand);
-p2=polyfit(t_rand,x_rand(:,3),5);
-f2=polyval(p2,t_rand);
+p1=polyfit(t_avg,x_avg(:,4),5);
+f1=polyval(p1,t_avg);
+p2=polyfit(t_avg,x_avg(:,3),5);
+f2=polyval(p2,t_avg);
 
-% Time derivatives for average height and range
+% Plotting the curve fit
 figure; hold on;
-subplot(2,1,1)
-plot(t_rand,f1,'c')
+subplot(2,1,1); 
+plot(t_avg,f1,'c')
 title('Time vs Range Curve Fit')
 xlabel('Time, s'), ylabel('Range, m'), grid
-subplot(2,1,2)
-plot(t_rand,f2,'m')
+subplot(2,1,2); hold on;
+plot(t_avg,f2,'m')
 title('Time vs Height Curve Fit')
 xlabel('Time, s'), ylabel('Height, m'), grid
 
-% Time derivatives
-dhdt=diff(f1)./diff(t_rand);
-drdt=diff(f2)./diff(t_rand);
+%% Time derivatives
+drdt=diff(f1)./diff(t_avg);
+dhdt=diff(f2)./diff(t_avg);
 
-figure; hold on
-subplot(2,1,1)
-plot(t_rand(2:end),drdt,'c');
+figure;
+subplot(2,1,1); hold on;
+plot(t_avg(2:end),drdt,'c');
 title('dr vs dt')
 xlabel('Time, s'), ylabel('Range, m'), grid
-hold on;
-subplot(2,1,2)
-plot(t_rand(2:end),dhdt,'m');
+
+subplot(2,1,2); hold on;
+plot(t_avg(2:end),dhdt,'m');
 title('dh vs dt')
 xlabel('Time, s'), ylabel('Height, m'), grid    
 
