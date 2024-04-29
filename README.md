@@ -1,7 +1,3 @@
-Sample Edit.  To be deleted.
-Thanks folks to helping out.  You can delete this and remove me as a collab.
-- Hamid
-
 # AEM-3103-Final-Project-2024
 This is the final project for the class AEM 3103 at the U of M, Twin Cities. This project was assigned to my team during the Spring 2024 Semester.
 
@@ -9,7 +5,7 @@ This is the final project for the class AEM 3103 at the U of M, Twin Cities. Thi
 Final Project: AEM 3103 Spring 2024
 
 - By: Lani Calderon, Keenan Raby, Justin Lancisi
-
+  
 ## Summary of Findings
 <Show the variations studied in a table>
 
@@ -24,20 +20,24 @@ A list of each function/script and a single-line description of what it does.  T
 # Figures
 
 ## Fig. 1: Single Parameter Variation
+![Alternative Text](./varygamma.jpg)
 <2D trajectory simulate2d by varying single parameter at at time>
 <The above plot should also show the nominal trajectory>
 
 Briefly describe what is being shown in the figure.
 
 ## Fig. 2: Monte Carlo Simulation
+![Alternative Text](./curvefit.jpg)
+![Alternative Text](./iterations.jpg)
 <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
 
 Briefly describe what is being shown in the figure.
 
 ## Fig. 3: Time Derivatives
+![Alternative Text](./derivatives.jpg)
 <Time-derivative of height and range for the fitted trajectory>
-
 Briefly describe what is being shown in the figure.
+
 
 (Below are for teams of 2-3 people)
 
