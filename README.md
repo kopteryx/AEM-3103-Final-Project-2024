@@ -12,15 +12,20 @@ Final Project: AEM 3103 Spring 2024
 Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
 Reference the figures below as needed.
 
+We sucessfully implemted several numerical methods to analyze the flight performance of a paper airplane under different parameters and were able to study how the affected the overall glide characteristics
+
 *If the analysis falls short of the goal, this is your chance to explain what was done or what were the barriers.*
 
 # Code Listing
 A list of each function/script and a single-line description of what it does.  The name of the function/script should link to the file in the repository on GitHub.
 
 [EqMotion](EqMotion.m)
-This function solves for xdot based on the global variables of the given parameters
+
+This function solves for xdot based on the global variables of the given parameters for our scenario.
+
 [PaperPlane](PaperPlane.m)
-This is the main script that runs all of the graphing and compution needed for the project
+
+This is the main script that runs all of the graphing and compution needed for the project.
 
 # Figures
 
@@ -29,19 +34,20 @@ This is the main script that runs all of the graphing and compution needed for t
 <2D trajectory simulate2d by varying single parameter at at time>
 <The above plot should also show the nominal trajectory>
 
-Briefly describe what is being shown in the figure.
+This figure compares glides of different velocities and different flight path angles and how they vary the height and range when you stray from nominal values (black lines).
+
 
 ## Fig. 2: Monte Carlo Simulation
 ![Alternative Text](./curvefit.jpg)
 ![Alternative Text](./iterations.jpg)
 <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
 
-Briefly describe what is being shown in the figure.
+This graph shows the resulting glide from 100 different iterations of a random parameters from which you can visually extract the general behavior of the system under different conditions.
 
 ## Fig. 3: Time Derivatives
 ![Alternative Text](./derivatives.jpg)
 <Time-derivative of height and range for the fitted trajectory>
-Briefly describe what is being shown in the figure.
+This figure shows the derivative of the height and range as a function of time based on the figure one curve fitting from the Monte Carlo Simulation
 
 
 (Below are for teams of 2-3 people)
