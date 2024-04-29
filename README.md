@@ -9,9 +9,9 @@ Final Project: AEM 3103 Spring 2024
 ## Summary of Findings
 <Show the variations studied in a table>
 
-| Attempt | #1    | #2    |
-| :-----: | :---: | :---: |
-| Seconds | 301   | 283   | 
+| Attempt | #1    | #2    | #3   |
+| :-----: | :---: | :---: | :--: |
+| Seconds | 301   | 283   | 298  |
 
 Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
 Reference the figures below as needed.
