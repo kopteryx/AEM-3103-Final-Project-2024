@@ -94,7 +94,7 @@ plot(t_rand,f2,'m')
 title('Time vs Height Curve Fit')
 xlabel('Time, s'), ylabel('Height, m'), grid
 
-% Time derivatives
+%% Time derivatives
 dhdt=diff(f1)./diff(t_rand);
 drdt=diff(f2)./diff(t_rand);
 
