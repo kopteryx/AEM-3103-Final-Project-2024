@@ -75,7 +75,7 @@ for i=1: 100
     t_sum=t_sum+t_rand;
     x_sum=x_sum+x_rand;
     plot(x_rand(:,4),x_rand(:,3));
-    title('Height v. Range With 100 Iterations of Random Perameters');
+    title('Height v. Range With 100 Iterations of Random Parameters');
     xlabel('Range, m'), ylabel('Height, m'), grid
 
 end
