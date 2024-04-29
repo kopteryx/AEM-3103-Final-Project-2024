@@ -12,7 +12,7 @@ Final Project: AEM 3103 Spring 2024
 Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
 Reference the figures below as needed.
 
-We sucessfully implemted several numerical methods to analyze the flight performance of a paper airplane under different parameters and were able to study how the affected the overall glide characteristics
+We successfully implemented several numerical methods to analyze the flight performance of a paper airplane under different parameters and were able to study how the affected the overall glide characteristics
 
 *If the analysis falls short of the goal, this is your chance to explain what was done or what were the barriers.*
 
@@ -25,7 +25,7 @@ This function solves for xdot based on the global variables of the given paramet
 
 [PaperPlane](PaperPlane.m)
 
-This is the main script that runs all of the graphing and compution needed for the project.
+This is the main script that runs all of the graphing and computation needed for the project.
 
 # Figures
 
@@ -42,12 +42,12 @@ This figure compares glides of different velocities and different flight path an
 ![Alternative Text](./iterations.jpg)
 <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
 
-This graph shows the resulting glide from 100 different iterations of a random parameters from which you can visually extract the general behavior of the system under different conditions.
+This graph shows the resulting glide from 100 different iterations of random parameters from which you can visually extract the general behavior of the system under different conditions.
 
 ## Fig. 3: Time Derivatives
 ![Alternative Text](./derivatives.jpg)
 <Time-derivative of height and range for the fitted trajectory>
-This figure shows the derivative of the height and range as a function of time based on the figure one curve fitting from the Monte Carlo Simulation
+This figure shows the derivative of the height and range as a function of time based on the Figure one curve fitting from the Monte Carlo Simulation
 
 
 (Below are for teams of 2-3 people)
