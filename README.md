@@ -67,7 +67,4 @@ This figure shows the derivative of the height and range as a function of time b
 (Below are for teams of 3 people)
 ## Graphical Animation
 <Same as the above animation, except that the moving *point* should be a 2D drawing of an airplane, drawn using CAD>
-
-| Attempt | #1    | #2    |
-| :-----: | :---: | :---: |
-| Seconds | 301   | 283   | 
+ ![2D Paper Airplane Flight Trajectory](./glider_trajectory.gif)
