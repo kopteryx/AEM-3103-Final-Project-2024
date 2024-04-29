@@ -49,17 +49,17 @@ figure; subplot(2,1,1); hold on;
 plot(xa(:,4),xa(:,3),'k',xb(:,4),xb(:,3),'r',xc(:,4),xc(:,3),'g')
 title('Height Vs. Range For Varying Gammas')
 xlabel('Range, m'), ylabel('Height, m'), grid
-legend(sprintf("γ_1 (Gam_1=%g)", Gam_1),...
-   sprintf("γ_2 (Gam_2=%g)", Gam_2),...
-   sprintf("γ_3 (Gam_3=%g)", Gam_3));  
+legend(sprintf("\\gamma_1 (Gam_1 = %g)", Gam_1),...
+   sprintf("\\gamma_2 (Gam_2 = %g)", Gam_2),...
+   sprintf("\\gamma_3 (Gam_3 = %g)", Gam_3));  
 
 subplot(2,1,2); hold on;
 plot(xa(:,4),xa(:,3),'k',xa2(:,4),xa2(:,3),'r',xb2(:,4),xb2(:,3),'g')
 title('Height Vs. Range For Varying Velocities')
 xlabel('Range, m'), ylabel('Height, m'), grid
-legend(sprintf("Velocity_1 (V_1=%g)", V_1),...
-   sprintf("Velocity_2 (V_2=%g)", V_2),...
-   sprintf("Velocity_3 (V_3=%g)", V_3));   
+legend(sprintf("Velocity_1 (V_1 = %g)", V_1),...
+   sprintf("Velocity_2 (V_2 = %g)", V_2),...
+   sprintf("Velocity_3 (V_3 = %g)", V_3));   
 
 %% 100 Iterations with random numbers for time and range
 figure; hold on;
@@ -141,7 +141,7 @@ glider_y2 = [-0.5 0.5]*imgsize(2) + xa(1,4);
 p2 = image(glider_x2,glider_y2,inPlot);
 p2.AlphaData = alpha; 
 
-% Plot the trajectory point by point for nominal velocity & gamma
+% Plot the trajectory point by point for nominal and upper bounded values
 for i = 1:length(x_max)
     addpoints(line_nominal,x_max(i,4),x_max(i,3));
     p1.XData = [-0.5 0.5]*imgsize(1) + x_max(i,4);
