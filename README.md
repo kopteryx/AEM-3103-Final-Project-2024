@@ -9,11 +9,14 @@ Final Project: AEM 3103 Spring 2024
 ## Summary of Findings
 <Show the variations studied in a table>
 
-| Attempt | #1    | #2    | #3   |
-| :-----: | :---: | :---: | :--: |
-| Seconds | 301   | 283   | 298  |
+| Values  | Velocity    | Gamma  | 
+| :-----: | :---------: | :----: | 
+| Minimum |   2 m/s     | -0.5   |
+| Nominal |  3.55 m/s   | -0.18  |
+| Maximum |  7.5 m/s    |  0.4   |
 
-Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
+When varying the velocities and gammas the impact on the range was indentified. Looking at the plotted data below, it was determined that the maximum values yielded the best range
+possible for velocity compared to the minimum values. However, for the gamma plots, the nominal value was ideal compared to both the maximums and minimums. The nominal values are presumed to be the ideal for the paper airplane's flight.  
 Reference the figures below as needed.
 
 We successfully implemented several numerical methods to analyze the flight performance of a paper airplane under different parameters and were able to study how the affected the overall glide characteristics
@@ -34,7 +37,7 @@ This is the main script that runs all of the graphing and computation needed for
 # Figures
 
 ## Fig. 1: Single Parameter Variation
-![Alternative Text](./varygamma.jpg)
+![Alternative Text](./parameters.png)
 <2D trajectory simulate2d by varying single parameter at at time>
 <The above plot should also show the nominal trajectory>
 
@@ -42,14 +45,14 @@ This figure compares glides of different velocities and different flight path an
 
 
 ## Fig. 2: Monte Carlo Simulation
-![Alternative Text](./curvefit.jpg)
-![Alternative Text](./iterations.jpg)
+![Alternative Text](./curvefit.png)
+![Alternative Text](./MonteCarlo.png)
 <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
 
 This graph shows the resulting glide from 100 different iterations of random parameters from which you can visually extract the general behavior of the system under different conditions.
 
 ## Fig. 3: Time Derivatives
-![Alternative Text](./derivatives.jpg)
+![Alternative Text](./derivatives.png)
 <Time-derivative of height and range for the fitted trajectory>
 This figure shows the derivative of the height and range as a function of time based on the Figure one curve fitting from the Monte Carlo Simulation
 
