@@ -37,7 +37,7 @@ This is the main script that runs all of the graphing and computation needed for
 # Figures
 
 ## Fig. 1: Single Parameter Variation
-![Alternative Text](./parameters.png)
+![Alternative Text](./Parameters.png)
 <2D trajectory simulate2d by varying single parameter at at time>
 <The above plot should also show the nominal trajectory>
 
