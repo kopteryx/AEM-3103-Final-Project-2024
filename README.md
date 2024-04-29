@@ -8,6 +8,9 @@ Final Project: AEM 3103 Spring 2024
   
 ## Summary of Findings
 <Show the variations studied in a table>
+| Attempt | #1    | #2    | #3    |
+| :-----: | :---: | :---: | :---: |
+| Seconds | 301   | 283   | 279   |
 
 Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
 Reference the figures below as needed.
@@ -59,7 +62,3 @@ This figure shows the derivative of the height and range as a function of time b
 (Below are for teams of 3 people)
 ## Graphical Animation
 <Same as the above animation, except that the moving *point* should be a 2D drawing of an airplane, drawn using CAD>
-
-| Attempt | #1    | #2    |
-| :-----: | :---: | :---: |
-| Seconds | 301   | 283   |
