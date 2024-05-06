@@ -37,7 +37,7 @@ This is the main script that runs all of the graphing and computation needed for
 # Figures
 
 ## Fig. 1: Single Parameter Variation
-![Alternative Text](./Parameters.png)
+![Alternative Text](./Figures/Parameters.png)
 <2D trajectory simulate2d by varying single parameter at at time>
 <The above plot should also show the nominal trajectory>
 
@@ -45,14 +45,14 @@ This figure compares glides of different velocities and different flight path an
 
 
 ## Fig. 2: Monte Carlo Simulation
-![Alternative Text](./curvefit.png)
-![Alternative Text](./MonteCarlo.png)
+![Alternative Text](./Figures/curvefit.png)
+![Alternative Text](./Figures/MonteCarlo.png)
 <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
 
 This graph shows the resulting glide from 100 different iterations of random parameters from which you can visually extract the general behavior of the system under different conditions.
 
 ## Fig. 3: Time Derivatives
-![Alternative Text](./derivatives.png)
+![Alternative Text](./Figures/derivatives.png)
 <Time-derivative of height and range for the fitted trajectory>
 This figure shows the derivative of the height and range as a function of time based on the Figure one curve fitting from the Monte Carlo Simulation
 
@@ -67,4 +67,4 @@ This figure shows the derivative of the height and range as a function of time b
 (Below are for teams of 3 people)
 ## Graphical Animation
 <Same as the above animation, except that the moving *point* should be a 2D drawing of an airplane, drawn using CAD>
- ![2D Paper Airplane Flight Trajectory](./glider_trajectory.gif)
+ ![2D Paper Airplane Flight Trajectory](./Figures/glider_trajectory.gif)
