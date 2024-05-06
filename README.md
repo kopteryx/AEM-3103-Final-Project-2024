@@ -7,17 +7,16 @@ Final Project: AEM 3103 Spring 2024
 - By: Lani Calderon, Keenan Raby, Justin Lancisi
   
 ## Summary of Findings
-<Show the variations studied in a table>
+
+When varying the velocities and gammas the impact on the range was indentified. Looking at the plotted data below, it was determined that the maximum values yielded the best range
+possible for velocity compared to the minimum values. However, for the gamma plots, the nominal value was ideal compared to both the maximums and minimums. The nominal values are presumed to be the ideal for the paper airplane's flight.  
+Reference the figures below as needed.
 
 | Values  | Velocity    | Gamma  | 
 | :-----: | :---------: | :----: | 
 | Minimum |   2 m/s     | -0.5   |
 | Nominal |  3.55 m/s   | -0.18  |
 | Maximum |  7.5 m/s    |  0.4   |
-
-When varying the velocities and gammas the impact on the range was indentified. Looking at the plotted data below, it was determined that the maximum values yielded the best range
-possible for velocity compared to the minimum values. However, for the gamma plots, the nominal value was ideal compared to both the maximums and minimums. The nominal values are presumed to be the ideal for the paper airplane's flight.  
-Reference the figures below as needed.
 
 We successfully implemented several numerical methods to analyze the flight performance of a paper airplane under different parameters and were able to study how the affected the overall glide characteristics
 
