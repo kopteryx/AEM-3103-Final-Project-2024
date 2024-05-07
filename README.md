@@ -36,7 +36,7 @@ This is the main script that runs all of the graphing and computation needed for
 ## Fig. 1: Single Parameter Variation
 ![Alternative Text](./Figures/Parameters.png)
 
-This figure compares the 2d trajectories of different velocities and different flight path angles and how they vary the height and range when you stray from nominal values (black lines).
+This figure compares the 2D trajectories of different velocities and different flight path angles and how they vary the height and range when you stray from nominal values (black lines).
 
 
 ## Fig. 2: Monte Carlo Simulation
