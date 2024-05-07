@@ -55,4 +55,4 @@ This figure shows the time-derivative of both the height and range as a function
 ## Graphical Animation
  ![2D Paper Airplane Flight Trajectory](./Figures/glider_trajectory.gif)
 
-The animated GIF above shows the 2D trajectory with the found nominal values, as well as the scenario where V=7.5 m/s and Gam=+0.4 rad). The moving point depicts a 2D drawing of an airplane, drawn using SolidWorks.
+The animated GIF above shows the 2D trajectory with the found nominal values, as well as the scenario where V=7.5 m/s and Gam=+0.4 rad. The moving point depicts a 2D drawing of the glider used to collect the data, drawn using SolidWorks.
