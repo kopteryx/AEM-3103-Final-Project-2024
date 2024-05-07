@@ -47,9 +47,8 @@ This figure compares glides of different velocities and different flight path an
 ![Alternative Text](./Figures/MonteCarlo.png)
 ![Alternative Text](./Figures/curvefit.png)
 
-<2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
-
-This graph shows the resulting glide from 100 different iterations of random parameters from which you can visually extract the general behavior of the system under different conditions.
+The MonteCarlo graph shows the resulting glide from 100 different iterations of random parameters from which you can visually extract the general behavior of the system under different conditions. 
+Using the data obtained from the graph, an average was identified and was plotted with polyfit and polyval leading to the construction of fifth order polynomial slope showcasing the linearity of both Height and Range with respect to time. Range increases with time whereas height decreased with it. 
 
 ## Fig. 3: Time Derivatives
 ![Alternative Text](./Figures/derivatives.png)
