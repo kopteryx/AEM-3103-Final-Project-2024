@@ -25,7 +25,7 @@ We successfully implemented several numerical methods to analyze the flight perf
 
 [EqMotion](EqMotion.m)
 
-This function solves for xdot based on the global variables of the given parameters for our scenario.
+This function solves for xdot based on the global variables of the given parameters for our scenario. 
 
 [PaperPlane](PaperPlane.m)
 
@@ -36,7 +36,9 @@ This is the main script that runs all of the graphing and computation needed for
 ## Fig. 1: Single Parameter Variation
 ![Alternative Text](./Figures/Parameters.png)
 
-This figure compares the 2D trajectories of different velocities and different flight path angles, where only one variable is changed each time. This then displayes how these changes vary both the height and range when you stray from the nominal values that were found (black lines).
+This figure compares the 2D trajectories of different velocities and different flight path angles, where only one variable is changed each time. This then displayes how these changes vary both the height and range when you stray from the nominal values that were found (black lines). 44
+
+Utilizing both the ode23 (runge-kutta method of numerical analysis) and the called upon EqMotion.m function, the height vs range graphs were constructed by feeding the ode23 and EqMotion the varying gammas and velocities and the constants (range, height, and time) and extracting the range and height components of the ode function to graph against each other.
 
 
 ## Fig. 2: Monte Carlo Simulation
@@ -44,12 +46,16 @@ This figure compares the 2D trajectories of different velocities and different f
 ![Alternative Text](./Figures/curvefit.png)
 
 The MonteCarlo graph shows the resulting glide from 100 different iterations of random parameters from which you can visually extract the general behavior of the system under different conditions. 
-Using the data obtained from the graph, an average was identified and was plotted with polyfit and polyval leading to the construction of fifth order polynomial slope showcasing the linearity of both Height and Range with respect to time. Range increases with time whereas height decreased with it. 
+
+Using the data obtained from the graph, an average was identified and was plotted with polyfit and polyval leading to the construction of fifth order polynomial slope showcasing the linearity of both height and range with respect to time. Range increases with time whereas height decreased with it. 
+
+While calculating and plotting the lines of the MonteCarlo, the sums of the ranges, heights, and time were recorded, being divided by the total iterations (in our case, 100) to supply us with an average for the 3 components. By using polyfit to extract a 5th order polynomial of the range and height plugging it into the polyval function evaluating the polynomial at each time interval. Plotting the polyval of height and range vs time produced beautiful linear graphs.
 
 ## Fig. 3: Time Derivatives
 ![Alternative Text](./Figures/derivatives.png)
 
 This figure shows the time-derivative of both the height and range as a function of time, which is based on the Figure one curve fitting from the Monte Carlo Simulation.
+The process of obtaining and graphing the time-derivatives vs time was done through the built in derivative approximation function, diff. Taking the 'diff' of both the polyval of range and height dividing it by the diff of time produces drdt and dhdt. These values will be plotted against time to create the drdt and dhdt vs time.
 
 
 ## Graphical Animation
