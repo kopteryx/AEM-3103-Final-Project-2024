@@ -55,7 +55,7 @@ This graph shows the resulting glide from 100 different iterations of random par
 ![Alternative Text](./Figures/derivatives.png)
 
 <Time-derivative of height and range for the fitted trajectory>
-This figure shows the derivative of the height and range as a function of time based on the Figure one curve fitting from the Monte Carlo Simulation
+This figure shows the derivative of the height and range as a function of time based on the Figure one curve fitting from the Monte Carlo Simulation.
 
 
 ## Graphical Animation
