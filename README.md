@@ -45,16 +45,19 @@ This figure compares glides of different velocities and different flight path an
 ## Fig. 2: Monte Carlo Simulation
 ![Alternative Text](./Figures/curvefit.png)
 ![Alternative Text](./Figures/MonteCarlo.png)
+
 <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
 
 This graph shows the resulting glide from 100 different iterations of random parameters from which you can visually extract the general behavior of the system under different conditions.
 
 ## Fig. 3: Time Derivatives
 ![Alternative Text](./Figures/derivatives.png)
+
 <Time-derivative of height and range for the fitted trajectory>
 This figure shows the derivative of the height and range as a function of time based on the Figure one curve fitting from the Monte Carlo Simulation
 
 
 ## Graphical Animation
-<Same as the above animation, except that the moving *point* should be a 2D drawing of an airplane, drawn using CAD>
  ![2D Paper Airplane Flight Trajectory](./Figures/glider_trajectory.gif)
+
+<Animated GIF showing 2D trajectory for nominal and the scenario (V=7.5 m/s, Gam=+0.4 rad), except that the moving *point* should be a 2D drawing of an airplane, drawn using CAD>
