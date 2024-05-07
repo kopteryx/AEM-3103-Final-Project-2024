@@ -22,7 +22,6 @@ We successfully implemented several numerical methods to analyze the flight perf
 
 
 # Code Listing
-A list of each function/script and a single-line description of what it does.  The name of the function/script should link to the file in the repository on GitHub.
 
 [EqMotion](EqMotion.m)
 
@@ -37,10 +36,7 @@ This is the main script that runs all of the graphing and computation needed for
 ## Fig. 1: Single Parameter Variation
 ![Alternative Text](./Figures/Parameters.png)
 
-<2D trajectory simulate2d by varying single parameter at at time>
-<The above plot should also show the nominal trajectory>
-
-This figure compares glides of different velocities and different flight path angles and how they vary the height and range when you stray from nominal values (black lines).
+This figure compares the 2d trajectories of different velocities and different flight path angles and how they vary the height and range when you stray from nominal values (black lines).
 
 
 ## Fig. 2: Monte Carlo Simulation
@@ -53,11 +49,10 @@ Using the data obtained from the graph, an average was identified and was plotte
 ## Fig. 3: Time Derivatives
 ![Alternative Text](./Figures/derivatives.png)
 
-<Time-derivative of height and range for the fitted trajectory>
-This figure shows the derivative of the height and range as a function of time based on the Figure one curve fitting from the Monte Carlo Simulation.
+This figure shows the time-derivative of both the height and range as a function of time, which is based on the Figure one curve fitting from the Monte Carlo Simulation.
 
 
 ## Graphical Animation
  ![2D Paper Airplane Flight Trajectory](./Figures/glider_trajectory.gif)
 
-<Animated GIF showing 2D trajectory for nominal and the scenario (V=7.5 m/s, Gam=+0.4 rad), except that the moving *point* should be a 2D drawing of an airplane, drawn using CAD>
+The animated GIF above shows the 2D trajectory with the found nominal values, as well as the scenario where V=7.5 m/s and Gam=+0.4 rad). The moving point depicts a 2D drawing of an airplane, drawn using SolidWorks.
