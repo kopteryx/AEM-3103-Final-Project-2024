@@ -44,8 +44,8 @@ This figure compares glides of different velocities and different flight path an
 
 
 ## Fig. 2: Monte Carlo Simulation
-![Alternative Text](./Figures/curvefit.png)
 ![Alternative Text](./Figures/MonteCarlo.png)
+![Alternative Text](./Figures/curvefit.png)
 
 <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
 
